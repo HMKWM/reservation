@@ -16,19 +16,32 @@ maven -> gradle
 
 GET (카테고리 목록 구하기): /api/categories
 
+ㅤ
+
 상품 목록 구하기 API 스펙 & test
 
 GET (상품 목록 구하기): /api/displayinfos
 
+ㅤ
+
 프로모션 정보 구하기 API 스펙 & test
+
+GET (프로모션 목록 구하기): /api/promotions
+
+ㅤ
 
 전시 정보 구하기
 
 GET (카테고리 목록 구하기): /api/displayinfos/{displayId}
 
+ㅤ
+
 댓글 목록 구하기 API 스펙 & test
 
 GET (댓글 목록 구하기): /api/comments
+
+ㅤ
+
 
 ### 프로젝트 D
 
