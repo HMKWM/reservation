@@ -8,14 +8,28 @@ https://www.boostcourse.org/web326/project/208/content/167?isDesc=false#summary
 
 maven -> gradle
 
-예약 등록하기
+## Web API 명세서
 
-POST (예약 등록하기): /api/reservationInfos
+### 프로젝트 C
 
-주문 정보 구하기 API 스펙 & test
+카테고리 목록 구하기
 
-GET (주문 정보 구하기): /api/reservationInfos
+GET (카테고리 목록 구하기): /api/categories
 
-예약 취소하기
+상품 목록 구하기 API 스펙 & test
 
-PUT (예약 취소하기): /api/reservationInfos
+GET (상품 목록 구하기): /api/displayinfos
+
+프로모션 정보 구하기 API 스펙 & test
+
+전시 정보 구하기
+
+GET (카테고리 목록 구하기): /api/displayinfos/{displayId}
+
+댓글 목록 구하기 API 스펙 & test
+
+GET (댓글 목록 구하기): /api/comments
+
+### 프로젝트 D
+
+
