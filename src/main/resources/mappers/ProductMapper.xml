@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.connect.reservation.dao.ProductDao">
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        insert into product(category_id, description, content, event, create_date, modify_date)
+        values (#{categoryId},#{description},#{content},#{event},now(),now())
+    </insert>
+    <select id="findById" resultType="Product">
+        select id, category_id, description, content, event, create_date, modify_date from product where id = #{id}
+    </select>
+    <select id="findAll" resultType="ApiProduct">
+        select p.id, p.category_id, d.id as displayInfoId, c.name, p.description, p.content, p.event,
+        d.opening_hours, d.place_name, d.place_lot, d.place_street, d.tel, d.homepage, d.email,
+        p.create_date, p.modify_date, pi.file_id
+        from display_info d
+                 inner join product p
+                            on d.product_id = p.id
+                 inner join category c
+                            on c.id = p.category_id
+                 inner join product_image pi
+                            on p.id = pi.product_id
+        where true
+        <if test="categoryId != 0">
+        and p.category_id = #{categoryId}
+        </if>
+        and pi.type = 'ma'
+        LIMIT #{start}, 4
+    </select>
+    <update id="update">
+        update product
+        set category_id = #{categoryId},
+            description = #{description},
+            content = #{content},
+            event = #{event},
+            modify_date = now()
+        where id = #{id}
+    </update>
+    <delete id="delete">
+        delete from product where id = #{id}
+    </delete>
+    <select id="count" resultType="Integer">
+        select count(*)
+        from display_info d
+        <if test="categoryId != 0">
+            inner join product p
+            on p.id = d.product_id
+            where p.category_id = #{categoryId}
+            group by p.category_id
+        </if>
+    </select>
+</mapper>
